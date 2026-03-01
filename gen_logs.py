@@ -223,7 +223,45 @@ while True:
         key_bytes = service.encode('utf-8')
         value_bytes = json.dumps(log_entry, ensure_ascii=False).encode('utf-8')
 
+        if log_entry['level']=='DEBUG':
+                producer.produce(
+                    KAFKA_TOPIC[0],
+                    key=key_bytes,
+                    value=value_bytes,
+                    callback=delivery_report)
+            elif log_entry['level']=='INFO':
+                producer.produce(
+                    KAFKA_TOPIC[1],
+                    key=key_bytes,
+                    value=value_bytes,
+                    callback=delivery_report)
+            elif log_entry['level']=='ERROR':
+                producer.produce(
+                    KAFKA_TOPIC[2],
+                    key=key_bytes,
+                    value=value_bytes,
+                    callback=delivery_report)
+            elif log_entry['level']=='WARNING':
+                producer.produce(
+                    KAFKA_TOPIC[3],
+                    key=key_bytes,
+                    value=value_bytes,
+                    callback=delivery_report)
+            elif log_entry['level']=='CRITICAL':
+                producer.produce(
+                    KAFKA_TOPIC[4],
+                    key=key_bytes,
+                    value=value_bytes,
+                    callback=delivery_report)
+            elif log_entry['level']=='TRACE':
+                producer.produce(
+                    KAFKA_TOPIC[5],
+                    key=key_bytes,
+                    value=value_bytes,
+                    callback=delivery_report)
+    
         # Отправка в соответствующий топик
+       '''
         topic_map = {
             'DEBUG': KAFKA_TOPIC[0],
             'INFO': KAFKA_TOPIC[1],
@@ -239,7 +277,7 @@ while True:
             value=value_bytes,
             callback=delivery_report
         )
-
+     '''
         producer.poll(0)
         remaining = producer.flush(timeout=5)
         if remaining > 0:
