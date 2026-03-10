@@ -33,6 +33,3 @@ install_packages "$DAG_POD" "dag-processor"
 install_packages "$TRIGGER_POD" "triggerer"
 
 echo "All packages installed successfully in all pods!"
-
-
-Последний верный без функции
