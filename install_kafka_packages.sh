@@ -15,7 +15,7 @@ install_packages() {
     local pod_type=$2
     
     echo "Installing packages in $pod_type pod: $pod_name"
-    # -it не указывать. В интерактивном режиме после добавления библиотек в scheduler скрипт будет прирываться.
+    # -it не указывать. В интерактивном режиме после добавления библиотек в scheduler выполнение скрипта завершиться.
     # То есть в интерактивном режиме после первого удачного выполнения происходит остановка.
     minikube kubectl -- exec $pod_name -n airflow -- /bin/bash -c "
         echo 'Upgrading pip...' &&
