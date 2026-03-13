@@ -17,8 +17,6 @@ install_packages() {
     echo "Installing packages in $pod_type pod: $pod_name"
     # -it не указывать.
     minikube kubectl -- exec $pod_name -n airflow -- /bin/bash -c "
-        echo 'Upgrading pip...' &&
-        pip install --upgrade pip &&
         echo 'Installing required packages...' &&
         pip install confluent-kafka kafka-python faker &&
         echo 'Package installation completed in $pod_type pod'
