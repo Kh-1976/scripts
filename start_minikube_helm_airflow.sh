@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "=== Запуск Minikube ==="
-minikube start
-
 echo "=== Обновление репозитория Apache Airflow ==="
 helm repo update
+
+echo "=== Запуск Minikube ==="
+minikube start
 
 echo "=== Ожидание 7 минут для полного запуска всех подов ==="
 echo "Ожидание началось: $(date)"
